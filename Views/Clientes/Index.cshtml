@@ -1,0 +1,84 @@
+﻿@model IEnumerable<empleados.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="content-wrapper pl-5 pl-5">
+<h1>Clientes</h1>
+
+<p>
+        <a type="button" class="btn btn-dark" asp-action="Create">Crear nuevo cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                Ciudad
+            </th>
+@*            <th>
+                Direccion
+            </th>*@
+            <th>
+                Tienda
+            </th>
+            <th>
+                Tipo de venta
+            </th>
+            <th>
+                Tipo de cliente
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCiudadNavigation.Nombre)
+            </td>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.IdDireccionNavigation.Nombre)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTiendaNavigation.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTipoVentaNavigation.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoClienteNavigation.Nombre)
+            </td>
+            <td>
+                        <a type="button" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Editar </a>
+                        <a type="button" class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Lista </a>
+                        <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
