@@ -9,16 +9,28 @@ using empleados.Models;
 
 namespace empleados.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     public class DireccionsController : Controller
     {
         private readonly projectContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DireccionsController"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public DireccionsController(projectContext context)
         {
             _context = context;
         }
 
         // GET: Direccions
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
               return _context.Direccions != null ? 
@@ -27,6 +39,11 @@ namespace empleados.Controllers
         }
 
         // GET: Direccions/Details/5
+        /// <summary>
+        /// Detailses the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Direccions == null)
@@ -53,6 +70,11 @@ namespace empleados.Controllers
         // POST: Direccions/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Creates the specified direccion.
+        /// </summary>
+        /// <param name="direccion">The direccion.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre")] Direccion direccion)
@@ -67,6 +89,11 @@ namespace empleados.Controllers
         }
 
         // GET: Direccions/Edit/5
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Direccions == null)
@@ -85,6 +112,12 @@ namespace empleados.Controllers
         // POST: Direccions/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="direccion">The direccion.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre")] Direccion direccion)
@@ -118,6 +151,11 @@ namespace empleados.Controllers
         }
 
         // GET: Direccions/Delete/5
+        /// <summary>
+        /// Deletes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Direccions == null)
@@ -136,6 +174,11 @@ namespace empleados.Controllers
         }
 
         // POST: Direccions/Delete/5
+        /// <summary>
+        /// Deletes the confirmed.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -154,6 +197,11 @@ namespace empleados.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Direccions the exists.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool DireccionExists(int id)
         {
           return (_context.Direccions?.Any(e => e.Id == id)).GetValueOrDefault();

@@ -9,16 +9,31 @@ using empleados.Models;
 
 namespace empleados.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     public class ClientesController : Controller
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly projectContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ClientesController"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public ClientesController(projectContext context)
         {
             _context = context;
         }
 
         // GET: Clientes
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
             var projectContext = _context.Clientes.Include(c => c.IdCiudadNavigation).Include(c => c.IdDireccionNavigation).Include(c => c.IdTiendaNavigation).Include(c => c.IdTipoVentaNavigation).Include(c => c.TipoClienteNavigation);
@@ -26,6 +41,11 @@ namespace empleados.Controllers
         }
 
         // GET: Clientes/Details/5
+        /// <summary>
+        /// Detailses the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Clientes == null)
@@ -49,6 +69,10 @@ namespace empleados.Controllers
         }
 
         // GET: Clientes/Create
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             ViewData["IdCiudad"] = new SelectList(_context.Ciudads, "Id", "Id");
@@ -62,6 +86,11 @@ namespace empleados.Controllers
         // POST: Clientes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Creates the specified cliente.
+        /// </summary>
+        /// <param name="cliente">The cliente.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Cedula,Telefono,IdCiudad,IdDireccion,IdTienda,IdTipoVenta,TipoCliente")] Cliente cliente)
@@ -81,6 +110,11 @@ namespace empleados.Controllers
         }
 
         // GET: Clientes/Edit/5
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Clientes == null)
@@ -104,6 +138,12 @@ namespace empleados.Controllers
         // POST: Clientes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="cliente">The cliente.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Cedula,Telefono,IdCiudad,IdDireccion,IdTienda,IdTipoVenta,TipoCliente")] Cliente cliente)
@@ -142,6 +182,11 @@ namespace empleados.Controllers
         }
 
         // GET: Clientes/Delete/5
+        /// <summary>
+        /// Deletes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Clientes == null)
@@ -165,6 +210,11 @@ namespace empleados.Controllers
         }
 
         // POST: Clientes/Delete/5
+        /// <summary>
+        /// Deletes the confirmed.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -183,6 +233,11 @@ namespace empleados.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Clientes the exists.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool ClienteExists(int id)
         {
           return (_context.Clientes?.Any(e => e.Id == id)).GetValueOrDefault();

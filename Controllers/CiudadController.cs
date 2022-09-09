@@ -9,6 +9,10 @@ using empleados.Models;
 
 namespace empleados.Controllers
 {
+    /// <summary>
+    /// CiudadController
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     public class CiudadController : Controller
     {
         private readonly projectContext _context;
@@ -19,6 +23,11 @@ namespace empleados.Controllers
         }
 
         // GET: Ciudad
+
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
               return _context.Ciudads != null ? 
@@ -27,6 +36,12 @@ namespace empleados.Controllers
         }
 
         // GET: Ciudad/Details/5
+
+        /// <summary>
+        /// Detailses the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Ciudads == null)
@@ -45,6 +60,10 @@ namespace empleados.Controllers
         }
 
         // GET: Ciudad/Create
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             return View();
@@ -53,6 +72,13 @@ namespace empleados.Controllers
         // POST: Ciudad/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+        /// <summary>
+        /// Creates the specified ciudad.
+        /// </summary>
+        /// <param name="ciudad">The ciudad.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre")] Ciudad ciudad)
@@ -67,6 +93,12 @@ namespace empleados.Controllers
         }
 
         // GET: Ciudad/Edit/5
+
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Ciudads == null)
@@ -85,6 +117,14 @@ namespace empleados.Controllers
         // POST: Ciudad/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="ciudad">The ciudad.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre")] Ciudad ciudad)
@@ -118,6 +158,12 @@ namespace empleados.Controllers
         }
 
         // GET: Ciudad/Delete/5
+
+        /// <summary>
+        /// Deletes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Ciudads == null)
@@ -136,6 +182,12 @@ namespace empleados.Controllers
         }
 
         // POST: Ciudad/Delete/5
+
+        /// <summary>
+        /// Deletes the confirmed.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

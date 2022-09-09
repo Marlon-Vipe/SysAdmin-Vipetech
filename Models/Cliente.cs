@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace empleados.Models
 {
+    /// <summary>
+    /// Clase cliente
+    /// </summary>
     public partial class Cliente
     {
         public int Id { get; set; }

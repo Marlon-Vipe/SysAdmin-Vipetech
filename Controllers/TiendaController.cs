@@ -9,16 +9,31 @@ using empleados.Models;
 
 namespace empleados.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     public class TiendaController : Controller
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private readonly projectContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TiendaController"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public TiendaController(projectContext context)
         {
             _context = context;
         }
 
         // GET: Tienda
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
               return _context.Tienda != null ? 
@@ -27,6 +42,11 @@ namespace empleados.Controllers
         }
 
         // GET: Tienda/Details/5
+        /// <summary>
+        /// Detailses the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Tienda == null)
@@ -45,6 +65,10 @@ namespace empleados.Controllers
         }
 
         // GET: Tienda/Create
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             return View();
@@ -53,6 +77,11 @@ namespace empleados.Controllers
         // POST: Tienda/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Creates the specified tiendum.
+        /// </summary>
+        /// <param name="tiendum">The tiendum.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre")] Tiendum tiendum)
@@ -67,6 +96,11 @@ namespace empleados.Controllers
         }
 
         // GET: Tienda/Edit/5
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Tienda == null)
@@ -85,6 +119,12 @@ namespace empleados.Controllers
         // POST: Tienda/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="tiendum">The tiendum.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre")] Tiendum tiendum)
@@ -118,6 +158,11 @@ namespace empleados.Controllers
         }
 
         // GET: Tienda/Delete/5
+        /// <summary>
+        /// Deletes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Tienda == null)
@@ -136,6 +181,11 @@ namespace empleados.Controllers
         }
 
         // POST: Tienda/Delete/5
+        /// <summary>
+        /// Deletes the confirmed.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -154,6 +204,11 @@ namespace empleados.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Tiendums the exists.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool TiendumExists(int id)
         {
           return (_context.Tienda?.Any(e => e.Id == id)).GetValueOrDefault();

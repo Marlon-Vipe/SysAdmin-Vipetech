@@ -9,6 +9,10 @@ using empleados.Models;
 
 namespace empleados.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     public class TipoClientesController : Controller
     {
         private readonly projectContext _context;
@@ -19,6 +23,10 @@ namespace empleados.Controllers
         }
 
         // GET: TipoClientes
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
               return _context.TipoClientes != null ? 
@@ -27,6 +35,11 @@ namespace empleados.Controllers
         }
 
         // GET: TipoClientes/Details/5
+        /// <summary>
+        /// Detailses the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.TipoClientes == null)
@@ -45,6 +58,10 @@ namespace empleados.Controllers
         }
 
         // GET: TipoClientes/Create
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             return View();
@@ -67,6 +84,11 @@ namespace empleados.Controllers
         }
 
         // GET: TipoClientes/Edit/5
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.TipoClientes == null)
@@ -85,6 +107,12 @@ namespace empleados.Controllers
         // POST: TipoClientes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edits the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="tipoCliente">The tipo cliente.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre")] TipoCliente tipoCliente)
@@ -118,6 +146,11 @@ namespace empleados.Controllers
         }
 
         // GET: TipoClientes/Delete/5
+        /// <summary>
+        /// Deletes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.TipoClientes == null)
@@ -136,6 +169,11 @@ namespace empleados.Controllers
         }
 
         // POST: TipoClientes/Delete/5
+        /// <summary>
+        /// Deletes the confirmed.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -154,6 +192,11 @@ namespace empleados.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Tipoes the cliente exists.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool TipoClienteExists(int id)
         {
           return (_context.TipoClientes?.Any(e => e.Id == id)).GetValueOrDefault();
