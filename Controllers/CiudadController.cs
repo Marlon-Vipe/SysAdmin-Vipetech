@@ -210,5 +210,10 @@ namespace empleados.Controllers
         {
           return (_context.Ciudads?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        public static int calcularEdad(int a, int b)
+        {
+            return a * b;
+        }
     }
 }

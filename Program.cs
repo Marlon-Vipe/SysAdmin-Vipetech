@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<projectContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("(Your connection string name)"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("projectDB"));
 });
 
 var app = builder.Build();
@@ -33,3 +33,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

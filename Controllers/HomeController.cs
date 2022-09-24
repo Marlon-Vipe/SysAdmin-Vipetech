@@ -14,14 +14,20 @@ namespace empleados.Controllers
         /// The logger
         /// </summary>
         private readonly ILogger<HomeController> _logger;
+        /// <summary>
+        /// The configuration
+        /// </summary>
+        private readonly IConfiguration _configuration;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HomeController" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
-        public HomeController(ILogger<HomeController> logger)
+        /// <param name="configuration">The configuration.</param>
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _logger = logger;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -30,6 +36,7 @@ namespace empleados.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
+            ViewData["Enviroment"] = _configuration["Enviroment"];
             return View();
         }
 
